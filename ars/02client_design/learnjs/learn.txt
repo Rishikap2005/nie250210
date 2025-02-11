@@ -1,0 +1,191 @@
+C:\Users\DELL\nie250210\ars\02client_design\learnjs>node
+Welcome to Node.js v22.13.1.
+Type ".help" for more information.
+> 2+3
+5
+>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+>
+
+C:\Users\DELL\nie250210\ars\02client_design\learnjs>cd..
+
+C:\Users\DELL\nie250210\ars\02client_design>cd learnjs
+
+C:\Users\DELL\nie250210\ars\02client_design\learnjs>node
+Welcome to Node.js v22.13.1.
+Type ".help" for more information.
+> parseInt(5/2)
+2
+> let first=10
+undefined
+> let second=3
+undefined
+> first/second
+3.3333333333333335
+> second=4
+4
+> first/second
+2.5
+> if(first>second)
+... console.log(first,'is max')
+10 is max
+undefined
+> for(let i=1;i<=5;i++){
+... console.log(i)
+... }
+1
+2
+3
+4
+5
+undefined
+> let i=1
+undefined
+> while(i<=5){
+... console.log(i)
+... i++
+... }
+1
+2
+3
+4
+5
+5
+> let car1={id:'102011',number:'KA25 T3456',model:'Ambasiter',type:'seden'}
+undefined
+> car1.number
+'KA25 T3456'
+> `My car is of ${car1.type}`
+'My car is of seden'
+> 'hello ${car1.id}`
+'hello ${car1.id}`
+^^^^^^^^^^^^^^^^^^
+
+Uncaught SyntaxError: Invalid or unexpected token
+> 'hello ${car1.type}`
+'hello ${car1.type}`
+^^^^^^^^^^^^^^^^^^^^
+
+Uncaught SyntaxError: Invalid or unexpected token
+> `hello ${car1.id}`
+'hello 102011'
+> let a=10,b=20
+undefined
+> let num=a+b
+undefined
+> `the sum of 10 and 20 is ${num}`
+'the sum of 10 and 20 is 30'
+> let s=[1000,2000,3000]
+undefined
+> s[0]
+1000
+> s.push(4000)
+4
+> s
+[ 1000, 2000, 3000, 4000 ]
+> let {number}=car1
+undefined
+> number
+'KA25 T3456'
+> let n=['ravi','jasi']
+undefined
+> let {n1,n2}=n
+undefined
+> n1
+undefined
+> let [n1.n2]=n
+let [n1.n2]=n
+     ^^^^^
+
+Uncaught SyntaxError: Illegal property in declaration context
+> let [n1,n2]=n
+Uncaught SyntaxError: Identifier 'n1' has already been declared
+> let [n,n2]=n
+Uncaught SyntaxError: Identifier 'n' has already been declared
+> let [n2,n3]=n
+Uncaught SyntaxError: Identifier 'n2' has already been declared
+> let [n5,n6]=n
+undefined
+> n5
+'ravi'
+> n6
+'jasi'
+> let s2=s
+undefined
+> s2
+[ 1000, 2000, 3000, 4000 ]
+> s
+[ 1000, 2000, 3000, 4000 ]
+> let s3=[...s]
+undefined
+> s3
+[ 1000, 2000, 3000, 4000 ]
+> s3[1]=4
+4
+> s3
+[ 1000, 4, 3000, 4000 ]
+> s2
+[ 1000, 2000, 3000, 4000 ]
+> let c2=c1
+Uncaught ReferenceError: c1 is not defined
+> let car2=car1
+undefined
+> car2.type='sun'
+'sun'
+> car2
+{ id: '102011', number: 'KA25 T3456', model: 'Ambasiter', type: 'sun' }
+> car1
+{ id: '102011', number: 'KA25 T3456', model: 'Ambasiter', type: 'sun' }
+> let car3=[...car1]
+Uncaught TypeError: car1 is not iterable
+> let car3={...car1}
+Uncaught SyntaxError: Identifier 'car3' has already been declared
+> let car4={...car1}
+undefined
+> car4.type='lulu'
+'lulu'
+> car4
+{
+  id: '102011',
+  number: 'KA25 T3456',
+  model: 'Ambasiter',
+  type: 'lulu'
+}
+> car1
+{ id: '102011', number: 'KA25 T3456', model: 'Ambasiter', type: 'sun' }
+> function findsum(firs,second){
+... return first+second
+... }
+undefined
+> function findsum(first,second){
+... return first+second
+... }
+undefined
+> findsum(2,4)
+6
+> function(a,b){
+function(a,b){
+^^^^^^^^
+
+Uncaught SyntaxError: Function statements require a function name
+> function(a,b){ return a+b}(2,3)
+function(a,b){ return a+b}(2,3)
+^^^^^^^^
+
+Uncaught SyntaxError: Function statements require a function name
+> const f=function(a,b){return a+b}(2,3)
+undefined
+> f
+5
+> const g=(a,b)=>{return a+b}
+undefined
+> g(2,3)
+5
+> const h=(a,b)=>a+b
+undefined
+> h(2,3)
+5
+> const sq=a=>a*a
+undefined
+> sq(6)
+36

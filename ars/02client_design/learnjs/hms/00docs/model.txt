@@ -1,0 +1,2 @@
+departmens:id,name,description
+design:list of departments,create departments
