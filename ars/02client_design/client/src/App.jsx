@@ -14,6 +14,7 @@ import Flightlist from "./flights/Flightlist"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Pageheader from "./header/Pageheader.jsx/Pageheader";
 import Counter from "./Counter";
+import FullName from "./FullName";
 function App() {
   
 
@@ -31,7 +32,7 @@ function App() {
         </Routes>
         </BrowserRouter>
       </div>
-      <Counter/>
+      <FullName/>
       
       
     </>
