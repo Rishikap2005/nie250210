@@ -1,13 +1,22 @@
 import { useState } from "react";
 import Pageheader from "../header/Pageheader.jsx/Pageheader";
+import { useEffect } from "react";
+import axios from 'axios';
 
 
 function Flightlist() {
-    const [flights,setFlights]=useState([
-        {id:'1010',num:'AI 765',airline_name:'Air India',source:'Mysore',destination:'Trichy',capacity:100,price:5000.0},
-        {id:'1011',num:'AI 765',airline_name:'Air India',source:'Mysore',destination:'Trichy',capacity:100,price:5000.0},
-        {id:'1018',num:'AI 765',airline_name:'Air India',source:'Mysore',destination:'Trichy',capacity:100,price:5000.0},
-    ]);
+    const [flights,setFlights]=useState([]);
+    const readallflights=async()=>{
+        alert(1)
+        try{
+            const baseurl='http://localhost:8080'
+            const response=await axios.get(`${baseurl}/flights`);
+            setFlights(response.data)
+        }catch(error){
+            alert('Server error');
+        }
+            };
+            useEffect(()=>{readallflights();},[]);
     return (
         <>
         <Pageheader PageNumber={1}/>
@@ -27,10 +36,10 @@ function Flightlist() {
                         {flights.map((flight)=>{
                             return(
                             <tr>
-                            <th scope="row">(flight.num)</th>
-                            <td className="text-primary">(flight.airline_name)</td>
-                            <td>(flight.source)</td>
-                            <td>(flight.destination)</td>
+                            <th scope="row">{flight.number}</th>
+                            <td className="text-primary">{flight.airline_name}</td>
+                            <td>{flight.source}</td>
+                            <td>{flight.destination}</td>
                             <td><a href="/flights/edit/$(flight.id)" className="btn btn-warning">edit</a>
                                 <button className="btn btn-danger">delete</button></td>
                         </tr>

@@ -5,20 +5,22 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
+	"time"
 )
 
  type Flight struct {
-	Id string
-	Num string
-	Airline string
-	Source string
-	Destination string
-	Capacity int
-	Price float32
+	Id string  `json:"id"`
+	Num string `json:"number"`
+	Airline string `json:"airline_name"`
+	Source string `json:"source"`
+	Destination string `json:"destination"`
+	Capacity int `json:"capacity"`
+	Price float32 `json:"price"`
  }
  func readallflights(c *gin.Context){
 	flights:=[]Flight{{Id: "201",Num: "AI 845",Airline: "Air India",Source: "Mumbai",Destination: "Destination",Capacity: 180,Price: 15000.0},
-	{Id: "201",Num: "AI 845",Airline: "Air India",Source: "Mumbai",Destination: "Destination",Capacity: 180,Price: 15000.0},
+	{Id: "202",Num: "AI 845",Airline: "Air India",Source: "Mumbai",Destination: "Destination",Capacity: 180,Price: 15000.0},
 }
 
 	c.JSON(http.StatusOK,flights)
@@ -39,7 +41,7 @@ import (
 	}
 	createflight:=Flight{Id:"1001",Num: "AI 845",Airline: "Air India",Source: "Mumbai",Destination: "Abu Dhabi",Capacity: 180,Price:15000.0}
 	c.JSON(http.StatusCreated,
-	gin.H{"messege":"Flight Created Sucessfully.","flight":createflight})
+	gin.H{"message":"Flight Created Sucessfully.","flight":createflight})
  }
  func updateflight(c *gin.Context){
 	id:=c.Param("id")
@@ -62,6 +64,15 @@ import (
 	// flight1:=Flight{Id: "201",Num: "AI 845",Airline: "Air India",Source: "Mumbai",Destination: "Destination",Capacity: 180,Price: 15000.0}
 	// fmt.Println(flight1)
 	r:=gin.Default()
+	
+		r.Use(cors.New(cors.Config{
+			AllowOrigins:     []string{"http://localhost:5173"}, // React frontend URL
+			AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+			AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+			ExposeHeaders:    []string{"Content-Length"},
+			AllowCredentials: true,
+			MaxAge:           12 * time.Hour,
+		}))
 	r.GET("/flights",readallflights)
 	r.GET("/flights/:id",readflightbyid)
 	r.POST("/flights",createflight)

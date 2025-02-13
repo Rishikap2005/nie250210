@@ -22,13 +22,13 @@ Employees:=[]Emp{{Id: "201",Name: "AI 845",Designation: "Air India",Technology: 
 
 	c.JSON(http.StatusOK,Employees)
  }
- func readflightbyid(c *gin.Context){
+ func readempbyid(c *gin.Context){
 	id:=c.Param("id")
 	flight:=Emp{Id: id,Name: "AI 845",Designation: "Air India",Technology: "Mumbai",Salary: 20,Commission: 180,Phonenumber: 15000}
 
 	c.JSON(http.StatusOK,flight)
  }
- func createflight(c *gin.Context){
+ func createemp(c *gin.Context){
 	var jbodyflight Emp
 	err:=c.BindJSON(&jbodyflight)
 	if err!=nil{
@@ -38,9 +38,9 @@ Employees:=[]Emp{{Id: "201",Name: "AI 845",Designation: "Air India",Technology: 
 	}
 	createflight:=Emp{Id: "201",Name: "AI 845",Designation: "Air India",Technology: "Mumbai",Salary: 20,Commission: 180,Phonenumber: 15000}
 	c.JSON(http.StatusCreated,
-	gin.H{"messege":"Flight Created Sucessfully.","flight":createflight})
+	gin.H{"messege":"employee Created Sucessfully.","flight":createflight})
  }
- func updateflight(c *gin.Context){
+ func updateemp(c *gin.Context){
 	id:=c.Param("id")
 	var jbodyflight Emp
 	err:=c.BindJSON(&jbodyflight)
@@ -51,21 +51,21 @@ Employees:=[]Emp{{Id: "201",Name: "AI 845",Designation: "Air India",Technology: 
 	}
 	updateflight:=Emp{Id: id,Name: "AI 845",Designation: "Air India",Technology: "Mumbai",Salary: 20,Commission: 180,Phonenumber: 15000}
 	c.JSON(http.StatusOK,
-	gin.H{"messege":"Flight updated Sucessfully.","flight":updateflight})
+	gin.H{"messege":"employee updated Sucessfully.","flight":updateflight})
  }
- func deleteflight(c *gin.Context){
+ func deleteemp(c *gin.Context){
 	c.JSON(http.StatusOK,
-	gin.H{"messege":"Flight deleted Sucessfully."})
+	gin.H{"messege":"employee deleted Sucessfully."})
  }
  func main(){
 	// flight1:=Flight{Id: "201",Num: "AI 845",Airline: "Air India",Source: "Mumbai",Destination: "Destination",Capacity: 180,Price: 15000.0}
 	// fmt.Println(flight1)
 	r:=gin.Default()
 	r.GET("/flights",readallemp)
-	r.GET("/flights/:id",readflightbyid)
-	r.POST("/flights",createflight)
-	r.PUT("/flights/:id",updateflight)
-	r.DELETE("/flights/:id",deleteflight)
+	r.GET("/flights/:id",readempbyid)
+	r.POST("/flights",createemp)
+	r.PUT("/flights/:id",updateemp)
+	r.DELETE("/flights/:id",deleteemp)
 	
 	r.Run(":8080")
  }
